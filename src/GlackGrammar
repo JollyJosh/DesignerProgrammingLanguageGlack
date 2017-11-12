@@ -1,0 +1,34 @@
+program               :            optStatementList EOF ;
+
+optStatementList      :            *none*   |   statementList ;
+
+statementList         :            statement optStatementList ;
+
+statement             :            funcDef | codeBlock | if/else | expr SEMICOL ;
+
+expr                  :            ID | STRING | CHAR | INTEGER | TRUE | FALSE | expr op expr | funcCall ;
+
+op                    :            + | - | * | / | ^ | = ;
+
+funcDef               :            DEFINE ID OPARENS optParamList CPARENS codeBlock ;
+
+funcCall              :            ID OPARENS optArgList CPARENS ;
+
+codeBlock             :            OCBRAK optStatementList CCBRAK ;
+
+if/else               :            IF OPARENS expr CPARENS codeBlock ELSE codeBlock ;
+
+optParamList          :            *none*   |   paramList ;
+
+paramList             :            ID | ID COMMA paramList ;
+
+optArgList            :            *none*   |   argList ;
+
+argList               :            expr | expr COMMA argList ;
+
+
+
+
+
+
+

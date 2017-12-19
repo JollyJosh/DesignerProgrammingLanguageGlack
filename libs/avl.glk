@@ -1,0 +1,65 @@
+define node(key, value, left, right, height)   {
+    this;
+}
+
+define max(x, y) {
+    if(x > y)   {
+        x;
+    }
+    else    {
+        y;
+    }
+}
+
+define height(node) {
+    if(node == NULL)    {
+        0;
+    }
+    else    {
+        node.height;
+    }
+}
+
+define newNode(key, value) {
+    x = node(key, value, NULL, NULL, 1);
+    x;
+}
+
+define rightRotate(y)   {
+    x = y.left;
+    t = x.right;
+
+    x.right = y;
+    y.left = t;
+
+    y.height = max(height(y.left), height(y.right)) + 1;
+    x.height = max(height(x.left), height(x.right)) + 1;
+
+    x;
+}
+
+define leftRotate(x)    {
+    y = x.right;
+    t = y.left;
+
+    y.left = x;
+    x.right = t;
+
+    x.height = max(height(x.left), height(x.right)) + 1;
+    y.height = max(height(y.left), height(y.right)) + 1;
+
+    y;
+}
+
+define getBalance(n)    {
+    if(n == NULL)   {
+        0;
+    }
+    else    {
+        height(n.left) - height(n.right);
+    }
+
+}
+
+
+

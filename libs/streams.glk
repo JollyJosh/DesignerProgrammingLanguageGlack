@@ -1,0 +1,34 @@
+define streamCons(car, cdr) {
+    this;
+}
+
+define streamCdr(s) {
+    e = s.cdr;
+    e();
+}
+
+define streamCar(s) {
+    s.car;
+}
+
+define streamRef(s, n) {
+    if(n == 0)  {
+        print(streamCar(s));
+        streamCar(s);
+    }
+    else    {
+        print(streamCar(s));
+        streamRef(streamCdr(s), n - 1);
+    }
+}
+
+define streamFilter(s, pred)   {
+    if(pred(streamCar(s)) == true)  {
+        streamCons(streamCar(s), lambda(){streamFilter(streamCdr(s), pred);});
+    }
+    else    {
+        streamFilter(streamCdr(s), pred);
+    }
+}
+
+

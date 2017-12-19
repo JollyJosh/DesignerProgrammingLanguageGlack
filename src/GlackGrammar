@@ -4,19 +4,44 @@ optStatementList      :            *none*   |   statementList ;
 
 statementList         :            statement optStatementList ;
 
-statement             :            funcDef | codeBlock | if/else | expr SEMICOL ;
+statement             :            funcDef | codeBlock | if/else | while | expr0 SEMICOL ;
 
-expr                  :            ID | STRING | CHAR | INTEGER | TRUE | FALSE | expr op expr | funcCall ;
+op0                   :            = ;
 
-op                    :            + | - | * | / | ^ | = ;
+op1                   :            < | > | <= | >= | == | != ;
+
+op2                   :            + | - ;
+
+op3                   :            * | / ;
+
+op4                   :            ^ ;
+
+op5                   :            . ;
+
+expr5                 :            unary op5 expr5 | unary
+
+expr4                 :            expr5 op4 expr4 | expr5
+
+expr3                 :            expr4 op3 expr3 | expr4
+
+expr2                 :            expr3 op2 expr2 | expr3
+
+expr1                 :            expr2 op1 expr1 | expr2
+
+expr0                 :            expr1 op0 expr0 | expr1
+
+unary                 :            INTEGER | STRING | ID | TRUE | FALSE | funcCall | NULL |
+                                   LAMBDA OPARENS optParamList CPARENS codeBlock | ID OBRACKET expr0 CBRACKET ;
 
 funcDef               :            DEFINE ID OPARENS optParamList CPARENS codeBlock ;
 
 funcCall              :            ID OPARENS optArgList CPARENS ;
 
-codeBlock             :            OCBRAK optStatementList CCBRAK ;
+codeBlock             :            OCBRACKET optStatementList CCBRACKET ;
 
-if/else               :            IF OPARENS expr CPARENS codeBlock ELSE codeBlock ;
+while                 :            WHILE OPARENS expr0 CPARENS codeBlock ;
+
+if/else               :            IF OPARENS expr0 CPARENS codeBlock ELSE codeBlock ;
 
 optParamList          :            *none*   |   paramList ;
 
@@ -24,7 +49,7 @@ paramList             :            ID | ID COMMA paramList ;
 
 optArgList            :            *none*   |   argList ;
 
-argList               :            expr | expr COMMA argList ;
+argList               :            expr0 | expr0 COMMA argList ;
 
 
 

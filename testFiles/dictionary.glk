@@ -1,0 +1,182 @@
+include("libs/avl.glk");
+
+define insert(node, key, value)    {
+
+    $Perform the BST insertion
+
+    if(node == NULL)    {
+        node = newNode(key, value);
+    }
+    else    {
+        $Do nothing
+    }
+
+    if(key < node.key)  {
+        node.left = insert(node.left, key, value);
+    }
+    else    {
+        if(key > node.key)  {
+            node.right = insert(node.right, key, value);
+        }
+        else    {
+            node;
+        }
+    }
+
+    node.height = 1 + max(height(node.left), height(node.right));
+
+    balance = getBalance(node);
+
+    if(balance > 1) {
+        if(key < node.left.key) {
+            node = rightRotate(node);
+        }
+        else    {
+            $Do Nothing
+        }
+    }
+    else    {
+        $Do Nothing
+    }
+
+
+    if(balance < -1)    {
+        if(key > node.right.key)    {
+            node = leftRotate(node);
+        }
+        else    {
+            $Do Nothing
+        }
+    }
+    else    {
+        $Do Nothing
+    }
+
+
+    if(balance > 1) {
+        if(key > node.left.key) {
+            node.left = leftRotate(node.left);
+            node = rightRotate(node);
+        }
+        else    {
+            $Do Nothing
+            }
+        }
+    else    {
+            $Do Nothing
+    }
+
+    if(balance < -1) {
+        if(key < node.right.key) {
+            node.right = rightRotate(node.right);
+            node = leftRotate(node);
+        }
+        else    {
+            $Do Nothing
+            }
+        }
+    else    {
+            $Do Nothing
+    }
+
+    node;
+
+}
+
+define and(one, two)    {
+    if(one == true) {
+        if(two == true) {
+            true;
+        }
+        else    {
+            false;
+        }
+    }
+    else    {
+        false;
+    }
+}
+
+define preOrder(root)   {
+    $print("PreOrder called!");
+
+    if(root == NULL)    {
+        $Do nothing
+        "Done";
+    }
+    else    {
+        print(root.key);
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+}
+
+define lookUp(root, thing)  {
+
+    if(root == NULL)    {
+        NULL;
+    }
+    else    {
+        if(thing < root.key)  {
+            lookUp(root.left, thing);
+        }
+        else    {
+            if(thing > root.key)  {
+                lookUp(root.right, thing);
+            }
+            else    {
+                print("Item found!");
+                root.value;
+            }
+        }
+    }
+}
+
+define main()   {
+
+    root = NULL;
+
+    print("Insert Key 10, Value 1.");
+    root = insert(root, 10, 1);
+    print("Insert Key 20, Value 2.");
+    root = insert(root, 20, 2);
+    print("Insert Key 30, Value 3.");
+    root = insert(root, 30, 3);
+    print("Insert Key 40, Value 4.");
+    root = insert(root, 40, 4);
+    print("Insert Key 50, Value 5.");
+    root = insert(root, 50, 5);
+    print("Insert Key 25, Value 52.");
+    root = insert(root, 25, 52);
+
+    print("PreOrder traversal should be: 30, 20, 10, 25, 40, 50 all on new lines.");
+    print("Pre order traversal: ");
+    print("");
+
+    preOrder(root);
+
+    print("");
+    print("Here is your searched for value at key 30 (Should be 3)!");
+
+    x = lookUp(root, 30);
+    if(x == NULL)   {
+        print("Item was not found!");
+    }
+    else    {
+            print(x);
+    }
+    print("");
+    print("Here is your searched for value at key 11 (Should be item not found).");
+
+
+    x = lookUp(root, 11);
+    if(x == NULL)   {
+        print("Item was not found!");
+    }
+    else    {
+            print(x);
+    }
+
+}
+
+main();

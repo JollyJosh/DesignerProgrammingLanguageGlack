@@ -1,0 +1,17 @@
+$This shows that my language can successfully implement iteration.
+$The only support forms are while loops.
+
+define main()   {
+
+    print("The following will print the numbers 1 to 50 using a while loop.");
+    x = 1;
+
+    $Print the numbers 1 to 50
+    while(x != 51)  {
+        print(x);
+        x = x + 1;
+    }
+
+}
+
+main();

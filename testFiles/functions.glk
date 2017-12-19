@@ -1,0 +1,44 @@
+$This is the file to test that functions are first class objects and
+$as such can be passed and nested functions can be returned!
+
+define func1(x)  {
+    $Define and return another function that returns 15
+    define func(y)   {
+        x + y;
+    }
+
+    func;
+}
+
+define func2(x) {
+    x();
+}
+
+$define func3()  {
+$    25;
+$}
+define main()   {
+    $x is now set to func which is returned from func1 (and itself returns 15)!
+$    x = func1();
+$
+$    print("This should print 15 from a returned nested function!");
+$    $Print 15
+$    print(x());
+$
+$    $Create function 2 and pass function3 to function 2.
+$    z = func2(func3);
+$    print("This should print 25 from the passed in function!");
+$    print(z);
+
+    z = func1(3);
+    w = func1(4);
+
+    print("Should be 13.");
+    print(z(10));
+    print("Should be 10.");
+    print(w(6));
+    print("Should be 15.");
+    print(z(12));
+}
+
+main();

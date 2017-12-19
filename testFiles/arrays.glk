@@ -1,0 +1,30 @@
+$This file will show that my DPL can handle creating arrays
+$and accessing arrays in constant time. It will also show
+$that array indices can be expressions that will return some number
+$to be used as the index.
+
+define help(x)   {
+    x = x + 1;
+    x;
+}
+define main()   {
+
+    $Create an array with the built in function "array" and pass
+    $in a size (5 for this example).
+    a = array(5);
+
+    $Arrays are zero indexed so now index 0-4 contains "null".
+
+    $Set array at index 1 to 25
+    a[1] = 25;
+
+    $Print the array value at index 1 by passing in a 0 to help
+    $which will return a 1 and using that as the index.
+
+    print("This should print null to show that the values are initialized to null following this line.");
+    print(a[0]);
+
+    print("This should print the value 25 following this line.");
+    print(a[help(0)]);
+}
+main();

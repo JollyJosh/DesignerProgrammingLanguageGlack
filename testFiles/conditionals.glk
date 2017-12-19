@@ -1,0 +1,90 @@
+$This file will test the conditionals of the language.
+$The following operators are viable equalities that can be used.
+$       < | > | <= | >= | == | !=
+$
+$       < | > | <= | >=   Can only be used with integers
+$
+$       while  == | !=  can be used with integers, strings, or booleans
+$
+$Each of these will be tested.
+
+define main()  {
+
+    $ == Tested with booleans should print true
+
+    print(" true == true Tested with booleans should print true.");
+    if(true == true)    {
+        print("This is true.");
+    }
+    else    {
+        print("This is false.");
+    }
+
+
+    $ != Tested with strings should print false
+
+    print("hello != hello Tested with strings should print false.");
+    if("hello" != "hello")  {
+        print("This is true.");
+    }
+    else    {
+        print("This is false.");
+    }
+
+    $ < Test
+
+    print("3 < 4 Test should print true.");
+    if(3 < 4)   {
+        print("This is true.");
+    }
+    else    {
+        print("This is false.");
+    }
+
+    $ > Test
+
+    print("10 > 20 Test should print false.");
+    if(10 > 20) {
+        print("This is true.");
+    }
+    else    {
+        print("This is false.");
+    }
+
+    $ <= Test
+
+    print("10 <= 10 Test should print true.");
+    if(10 <= 10)    {
+        print("This is true.");
+    }
+    else    {
+        print("This is false.");
+    }
+
+    $ >= Test
+
+    print("15 >= 16 Test should print false.");
+    if(15 >= 16)    {
+        print("This is true.");
+    }
+    else    {
+        print("This is false.");
+    }
+
+    $BONUS SHOW OFF
+
+    print("");
+    print("To show off a little I can also evaluate integer expressions with operator precedence.");
+    print("");
+    print("5 + 6 * 10 < 5 * 10 + 6 Test should print false");
+    if(5 + 6 * 10 < 10 + 5 * 6) {
+        print("This is true.");
+    }
+    else    {
+        print("This is false.");
+    }
+
+
+}
+
+main();

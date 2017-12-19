@@ -1,0 +1,31 @@
+$This will show that my language can accurately handle recursion
+$by completing the classic fibonacci sequence recursion problem.
+
+define fib(x)  {
+    if(x == 0)  {
+        0;
+    }
+    else    {
+        if(x == 1)  {
+            1;
+        }
+        else    {
+            fib(x - 1) + fib(x - 2);
+        }
+    }
+}
+define main()   {
+
+    print("The following is the result of calling fibonacci with the number 8.");
+    print("The following should be the value 21 (the eighth value in fib sequence).");
+
+    $Start at eight
+    print(fib(8));
+
+    print("The following is the result of calling fibonacci with the number 15.");
+    print("The following should be the value 610 (the 15th value in fib sequence).");
+
+    $Start at fifteen
+    print(fib(15));
+}
+main();

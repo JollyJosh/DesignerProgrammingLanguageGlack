@@ -1,0 +1,39 @@
+$This file will show that my language can successfully handle
+$anonymous functions using the keyword LAMBDA
+
+define main(b) {
+    b("Hello World! This was printed via a passed in lambda!");
+}
+main(lambda(b) {print(b);});
+
+define c()  {
+    lambda(x){print(x);};
+}
+
+define main()   {
+    y = c();
+    y("Hello World! This was printed via a returned lambda!");
+
+}
+main();
+print("");
+print("");
+
+define main2()  {
+    z = lambda(x)   {
+        lambda(y)   {
+            x + y;
+        };
+    };
+
+    a = z(3);
+    y = z(4);
+
+    print("This should print 13.");
+    print(a(10));
+    print("This should print 10.");
+    print(y(6));
+    print("This should print 15.");
+    print(a(12));
+}
+main2();

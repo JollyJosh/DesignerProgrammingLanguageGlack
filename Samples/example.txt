@@ -1,0 +1,99 @@
+$THIS IS JUNK FILE FOR PROGRAMMING IDEAS
+$AND QUICK IMPLEMENTATIONS
+$PLEASE IGNORE
+
+$What's going on
+define first()  {
+    print("Hello World");
+}
+first();
+define three()  {
+    3;
+}
+define second() {
+    a = array(5);
+    a[three()] = 12;
+    print(a[3]);
+}
+second();
+define cons(car, cdr)   {
+    this;
+}
+$Object Oriented
+define third()  {
+    x = cons(1, 2);
+    print(x.car);
+    print(x.cdr);
+
+    print("LOOK HERE");
+    y = 5 ^ 3 - 5 ^ 2;
+    print(y);
+}
+third();
+define fib()    {
+    true;
+}
+define fib1(x)   {
+    false;
+    x()
+}
+
+fib1(fib)
+
+define fib1()   {
+    define fib()    {
+        15;
+    }
+
+    fib;
+}
+
+x = fib1();
+
+x();
+$Iteration
+$i = 0;
+$while(fib())  {
+$    i = i + 5;
+$    print(i);
+$}
+
+define a(b) {
+    b("hello world (again)!");
+}
+a(lambda(b) {print(b);});
+
+$Conditional
+define fourth() {
+    x = 10;
+    y = 10;
+    if("Hello" == "Hello") {
+        print("This is true.");
+    }
+    else    {
+        print("This is false.");
+    }
+}
+fourth();
+
+define fib(x)   {
+    if(x != 8388608)    {
+    print(x);
+    fib(x + x);
+    }
+    else    {
+    print("Done foo");
+    }
+}
+$fib(1);
+
+$test DOT assignment
+
+define fifth()  {
+    x = cons(1, 2);
+    x.car = "Hello car!";
+    print(x.car);
+}
+$fifth();
+print(3%3);
+

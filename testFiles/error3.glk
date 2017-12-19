@@ -1,0 +1,13 @@
+$This is the third and final syntax error file
+$This file will throw an error in the function definition
+$for not having an arg list that ends in a comma which signifies
+$that it is expecting an id for another variable instead of the end
+$of the arg list.
+
+$According to the grammar, another argument should follow x since
+$there is a comma.
+
+define main(x,) {
+    print(x);
+}
+main(1);

@@ -1,0 +1,10 @@
+$This is a program to show the first syntax error for error1.
+
+define main()   {
+
+    $This should throw an error because according to the grammar
+    $every statement should end with a ';'
+
+    print("This won't be printed.")
+}
+main();

@@ -1,0 +1,12 @@
+$Basic implementation of cons is found in extraLib.glk
+include("libs/extraLib.glk");
+
+define main()   {
+    x = cons(1, 2);
+    print("Car of (1,2). Should print 1.");
+    print(x.car);
+    print("Cdr of (1,2). Should print 2.");
+    print(x.cdr);
+}
+
+main();

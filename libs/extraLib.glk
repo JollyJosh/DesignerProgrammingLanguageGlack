@@ -1,0 +1,4 @@
+$This will allow the basic implementation of cons
+define cons(car, cdr)   {
+    this;
+}

@@ -1,0 +1,14 @@
+$This is the second semantic error file. This will catch
+$the error of not having an else block in an if-else statement
+
+define main()   {
+
+    $According the grammar ALL if statements must include an
+    $else block, even if the else code block is empty.
+
+    if(true)    {
+        print("Hello World");
+    }
+
+}
+main();

@@ -1,0 +1,25 @@
+include("libs/streams.glk");
+
+define intStartFrom(n)  {
+    streamCons(n, lambda(){intStartFrom(n + 1);});
+}
+
+define notDivisible(x, y)  {
+    x % y != 0;
+}
+
+define sieve(s)    {
+    streamCons(streamCar(s),
+        lambda()    {sieve(streamFilter(streamCdr(s),
+            lambda(x)   {
+                notDivisible(x, streamCar(s));
+            }));});
+}
+
+x = sieve(intStartFrom(2));
+print("Here is the 50th prime (with zero based indexing) in the sieve problem (should be 233).");
+streamRef(x, 49);
+print("Here is the second prime (with zero based indexing) in the sieve problem (should be 3).");
+streamRef(x, 1);
+
+

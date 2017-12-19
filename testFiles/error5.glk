@@ -1,0 +1,11 @@
+$This is the fifth and final error file, and the second semantics error.
+$This file will error out saying that a value is undefined in the
+$environment, and as such cannot be used.
+
+define main()   {
+
+    $The variable x is undefined here, and as such has no value
+    print(x);
+
+}
+main();

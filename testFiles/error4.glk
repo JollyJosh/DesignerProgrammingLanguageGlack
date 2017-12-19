@@ -1,0 +1,18 @@
+$This is the fourth error file, and the first semantic error file.
+$This file will throw an error when trying to compare two strings
+$with an inequality other than equals and not equals
+$(ie. less than, greater than, etc). In this language only integers
+$can be compared for those types of equalities.
+
+define main()   {
+
+    $This comparison fails
+    if("hello" < "hello world") {
+        print("This will error.");
+    }
+    else    {
+        print("I really hope I pass this class.");
+    }
+
+}
+main();

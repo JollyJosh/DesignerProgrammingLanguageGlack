@@ -1,0 +1,268 @@
+ __          __  _                            _           _____ _            _
+ \ \        / / | |                          | |         / ____| |          | |
+  \ \  /\  / /__| | ___ ___  _ __ ___   ___  | |_ ___   | |  __| | __ _  ___| | __
+   \ \/  \/ / _ \ |/ __/ _ \| '_ ` _ \ / _ \ | __/ _ \  | | |_ | |/ _` |/ __| |/ /
+    \  /\  /  __/ | (_| (_) | | | | | |  __/ | || (_) | | |__| | | (_| | (__|   <
+     \/  \/ \___|_|\___\___/|_| |_| |_|\___|  \__\___/   \_____|_|\__,_|\___|_|\_\
+
+
+Glack is a Java implemented, turing complete, and fully functional
+programming language developed by Josh Collins for his CS403 Final Project.
+This programming language is made to mimic much of the C programming
+language's style in an effort to make the implementation feel as familiar
+as possible to the user.
+
+I. Bonus Features
+------------
+1. Included libraries and include statements
+
+    include("filepath/file.glk") - This allows for code to be imported
+    from another file and examined in the scope of the current file
+    being used.
+
+    avl.glk
+    streams.glk - Utilizing the above include function, Glack comes
+    with libraries that contain helper functions for creating an avl
+    tree, as well as implementing streams and delayed evaluations functionality.
+    These libraries can be utilized by creating an include statement with
+    their relative paths at the top of the code.
+
+    The implementation of this bonus feature can be seen in the
+    avl tree and sieve programs, as well as by calling the following commands.
+
+    make extra
+    make extrax
+
+2. Object Oriented with "." access and the "this" current environment variable
+
+    this - Glack allows for the finding of the current environment
+    by utilizing the keyword this. This implementation allows for a
+    form of object orientation by allowing objects to be defined as
+    follows:
+
+            define cons(car, cdr)   {
+                this;
+            }
+
+    In this example we create a cons element with structure elements
+    of car and cdr.
+
+    "." access - To access these object elements, Glack makes use of
+    the often accepted dot. While this feature does not yet work for methods
+    (although future implementations are in the works), it will allow
+    you to access data points in objects defined above. For example, if
+    the user wants to access the car of an object as defined in the example above
+    it would look as follows:
+
+        x = cons(1, 2);
+        print(x.car); $Prints 1
+        print(x.cdr); $Prints 2
+
+    While this implementation is used frequently throughout the various
+    test programs (sieve, avl, etc.), an extra file that shows how this
+    works to create a basic cons structure can be found using the following
+    terminal commands.
+
+    make extra
+    make extrax
+
+3. Operator Precedence
+
+    Glack has a predefined operator precedence that falls in line with
+    the rules define in the grammar. This precedence allows the users to
+    create complex expressions which evaluate in a similar manner to real
+    world calculations. The order of operations is done from first to last
+    as follows:
+
+        Level 5 -> Dot access "."
+        Level 4 -> Power "^";
+        Level 3 -> Multiply "*", Divide "/"
+        Level 2 -> Plus "+", Minus "-"
+        Level 1 -> Inequalities and Equalities
+        Level 0 -> Assignment "="
+
+4. Builtin Functions
+
+    Glack supports three built in functions for use anywhere in the
+    program.
+
+        print(x); $This takes a single object that will be evaluated and printed
+                  $To print a blank line pass in "" as the parameter
+
+        include("filepath/file.glk"); $See above section
+
+        array(size); $This creates an array of Lexemes
+        (initialized to NULL) of size as parameter
+
+    Implementation can be found in the arrays test file (for array
+    creation), and print and include can be found in the avl test.
+
+5. Syntax Line Errors
+
+    Glack will monitor, track, and print the line number for any syntax
+    error that is caught.
+
+    This bonus feature can be seen in any of the first three error
+    tests.
+
+II. File list
+------------
+Environment.java   Environment implementation
+Evaluator.java	   Evaluator implementation
+Lexeme.java        Lexeme implementation
+LexemeType.java    Lexeme Type implementation
+                   (for java style dynamic typing)
+Lexer.java         Lexer implementation
+Parser.java        Parser implementation
+avl.glk            A library with all helper functions
+                   for a basic AVL tree implementation
+streams.glk        A library of stream helper functions
+                   for a delayed evaluation implementation
+
+
+Program can be built using default make arguments specified in
+the given spec.
+
+A shell script is also included to five the
+following program running functionality:
+
+    dpl anyFile.glk
+
+III. Design
+------------
+
+1. General
+
+    Glack is a java implemented language that looks very similar to c.
+    All individual statements must be follows by a semicolon, except for at
+    the end of a function (so a functions body does not need a semicolon
+    following the closing brace.
+
+2. Unary Types
+
+    Being a dynamically typed language, Glack treats its base types
+    as unary values. The unary types for variables can be integers,
+    strings, true, NULL, lambdas, function calls, or false.
+
+    Lambdas and function calls are considered unary types as well which
+    allows them to be passed around, returned, and assigned to variables,
+    making these first class objects. (See functions and lamdas test files).
+
+3. If/Else Statements
+
+    In Glack, all if statements MUST contain an else statement. The else
+    statement may be blank, but it must exist. If and else blocks
+    also require both to have their statements wrapped in curly braces
+    EVEN IF there is no code to be implemented.
+
+    if(expression == true)  {
+        doThing();
+    }
+    else    {
+        $In this case nothing is done,
+        $but braces and the else are still required
+    }
+
+    There is no else if statements in Glack, these must be performed
+    with nested if statements.The expression can contain any of the
+    expressions and operators defined in the grammar.
+
+4. While Loops and Iteration
+
+    Glack supports for iteration using while loops. There is no
+    for loops in Glack. The while loop will take an expression, and
+    so long as that expression is met, the code block will be executed.
+    The code following while loops MUST be enclosed in curly braces.
+
+    while(x > y)    {
+        doThing();
+        doAnotherThing();
+    }
+
+5. Anonymous Functions and Lambdas
+
+    Glack treats anonymous functions as first class objects, and as
+    such they can be returned, passed, and they capture local scope.
+    Anonymous functions are declared by using the keyword lambda.
+    Lambda functions may accept parameters in parentheses, and the code that the lambda
+    evaluates MUST be wrapped in a code block.
+
+    lambda(x)   {print(x);}
+
+6. Function Definitions
+
+    Function definitions are created by using the keyword "define" followed by an
+    id. They accept parameters that are comma separated (but no comma at the
+    end of the args list, just like in c), and are followed by a
+    code bock wrapped in curly braces.
+
+    define function(s, x)   {
+        s + x;
+    }
+
+    Functions have implicit returns in a method that is similar to
+    scheme and scam. The above code returns s+x when function is called.
+
+7. Function Calls
+
+    Function calls are created in a manner similar to c. The id
+    is called with parameters passed in as comma separated. Since functions
+    are first class objects, functions can be set to variables and than
+    that variable can be called.
+
+    $typical function call
+    addNums(1, 2);
+
+    $assignment with call
+    y = addNums(1, 2);
+    y();
+
+8. Arrays
+
+    Arrays are created by calling the built in function "array". This
+    function takes in an integer as a size and initializes an array of Lexemes
+    to null of that size. Arrays can be assigned to variables and indexed in
+    the same manner as c (with constant access time). Arrays are zero based
+    index, ie. an array of size 5 will have indexes 0 - 4. Arrays can be indexed
+    with any expression that evaluates to an integer.
+
+    a = array(5);
+    a[3] = 10;
+    $Will print 10
+    print(a[3]);
+
+9. Variables and Variable Assignment
+
+   Variables in Glack are dynamically typed, and can be assigned
+   any unary value as specified in the grammar. A variable can be
+   passed and returned as a function argument.
+
+   x = 10;
+   y = function();
+   function2(y, x);
+
+10. Comments
+
+    Only single line comments are allowed. Single line comments start
+    with a $ because (as written in the comments of the code), the designer
+    of this project is all about the money!
+
+    print(x);
+    $This will not show up
+    print(y);
+
+11. Object Creation, Assignment, and Returns
+
+    See bonus section on this and dot.
+
+
+------------
+
+If you made it this far into the read me, and thought this project was
+good, then thanks! I put everything I had into this project, because it decides
+and it's probably the best program I have ever written. - Josh
+
+
+
+
+

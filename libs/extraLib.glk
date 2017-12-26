@@ -2,3 +2,11 @@ $This will allow the basic implementation of cons
 define cons(car, cdr)   {
     this;
 }
+
+c = cons(1,2);
+c.car
+c.cdr
+
+s = con(labda(x)    {x+1;}, 2);
+s.car(5);
+s.car(s.cdr)

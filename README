@@ -7,7 +7,7 @@
 
 
 Glack is a Java implemented, turing complete, and fully functional
-programming language developed by Josh Collins for his CS403 Final Project.
+programming language developed by Josh Collins (me!) for my CS403 Final Project.
 This programming language is made to mimic much of the C programming
 language's style in an effort to make the implementation feel as familiar
 as possible to the user.

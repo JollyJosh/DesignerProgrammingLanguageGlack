@@ -23,7 +23,7 @@ define main()   {
     print(fib(8));
 
     print("The following is the result of calling fibonacci with the number 15.");
-    print("The following should be the value 610 (the 15th value in fib sequence).");
+    print("The following should be the value 610 (the 15th value in fib sequence)ma.");
 
     $Start at fifteen
     print(fib(15));

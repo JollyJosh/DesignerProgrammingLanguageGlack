@@ -123,7 +123,7 @@ streams.glk        A library of stream helper functions
 Program can be built using default make arguments specified in
 the given spec.
 
-A shell script is also included to five the
+A shell script is also included to give the
 following program running functionality:
 
     dpl anyFile.glk
